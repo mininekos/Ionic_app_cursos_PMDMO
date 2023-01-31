@@ -1,0 +1,7 @@
+{
+  "name": "Ionic_app_cursos_PMDMO",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
