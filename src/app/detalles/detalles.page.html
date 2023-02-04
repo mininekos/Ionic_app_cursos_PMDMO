@@ -1,9 +1,14 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>detalles</ion-title>
+    <ion-title>{{curso.getNombre()}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+    <ion-item>
+      <ion-label>El curso de {{curso.getNombre()}} tiene una nota de {{curso.getNota()}}</ion-label>
+      <ion-button (click)="eliminarCurso()">
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
 </ion-content>

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { Curso } from '../modelo/curso';
+import { ServicioService } from '../servicios/servicio.service';
 
 @Component({
   selector: 'app-inicio',
@@ -12,8 +15,11 @@ export class InicioPage implements OnInit {
   formCurso!:FormGroup;
   formNombre!:FormControl;
   formNota!:FormControl;
+  cursos!:Curso[];
 
-  constructor( private controlAlerta: AlertController) { }
+  constructor( private controlAlerta: AlertController, private servicio:ServicioService, private route: Router) {
+    this.servicio.cursos$.subscribe(c=>this.cursos=c);
+   }
 
   ngOnInit() {
     this.crearComponentes();
@@ -48,5 +54,13 @@ export class InicioPage implements OnInit {
   
       await alert.present();
     }
+    else{
+      this.servicio.agregarCurso(new Curso(this.formNombre.value,this.formNota.value))
+      this.formCurso.reset();
+    }
+  }
+
+  mostrarDetalles(curso:Curso){
+    this.route.navigate(['detalles',curso.getId()])
   }
 }

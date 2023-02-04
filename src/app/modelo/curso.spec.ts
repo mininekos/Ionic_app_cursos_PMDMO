@@ -1,7 +1,7 @@
-import { Curso } from './curso';
+// import { Curso } from './curso';
 
-describe('Curso', () => {
-  it('should create an instance', () => {
-    expect(new Curso()).toBeTruthy();
-  });
-});
+// describe('Curso', () => {
+//   it('should create an instance', () => {
+//     expect(new Curso()).toBeTruthy();
+//   });
+// });

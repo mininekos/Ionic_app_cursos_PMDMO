@@ -25,10 +25,19 @@ export class ServicioService {
     return this.cursos$.asObservable();
   }
 
-  agregarCurso(nombre:string,nota: Number){
-    this.cursos.unshift(new Curso(nombre,nota))
+  agregarCurso(c:Curso){
+    this.cursos.unshift(c)
     this.cursos$.next([...this.cursos])
 
+  }
+
+  borrarCurso(curso: Curso){
+    this.cursos=this.cursos.filter(c=>c.getId() != curso.getId());
+    this.cursos$.next([...this.cursos]);
+  }
+
+  obtenerCursoDetalle(id: string):Curso{
+    return this.cursos.filter(c=>c.getId() == id)[0]
   }
 
 }

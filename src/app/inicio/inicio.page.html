@@ -13,14 +13,26 @@
       <form [formGroup]="formCurso">
         <ion-item>
           <ion-label position="floating"> Nombre : </ion-label>
-          <ion-input placeholder="" formControlName="formNombre"> </ion-input>
+          <ion-input type="text" formControlName="formNombre" > </ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="floating"> Nota :  </ion-label>
-          <ion-input type="number" formControlName="formNota"></ion-input>
-        </ion-item>
+          <ion-input type="number" formControlName="formNota" ></ion-input>
+        </ion-item >
         <ion-button (click)="comprobarValidators()">Agregar</ion-button>
       </form>
     </ion-card-content>
   </ion-card>
+
+  <ion-list>
+    <ion-list-header> Cursos </ion-list-header>
+      <ion-item *ngFor=" let c of cursos" (click)="mostrarDetalles(c)">
+          <ion-label>{{c.getNombre()}}: 
+            {{c.getNota()}}
+          </ion-label>
+          <ion-button (click)="mostrarDetalles(c)">
+            <ion-icon name="send-outline"></ion-icon>
+          </ion-button>
+      </ion-item>
+  </ion-list>
 </ion-content>
